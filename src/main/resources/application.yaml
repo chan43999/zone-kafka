@@ -1,0 +1,21 @@
+spring:
+  kafka:
+    bootstrap-servers: helm-kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: 1234
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+---
+spring:
+  profiles: local
+  kafka:
+    bootstrap-servers: localhost:9092
+
+
+
